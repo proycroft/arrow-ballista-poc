@@ -43,6 +43,7 @@ hdfs3 = ["datafusion-objectstore-hdfs/hdfs3"]
 s3 = ["object_store/aws"]
 
 [dependencies]
+deltalake-core = { version = "0.17.0", features = ["datafusion"] }
 ahash = { version = "0.8", default-features = false }
 arrow-flight = { workspace = true }
 async-trait = "0.1.41"

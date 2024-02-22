@@ -46,6 +46,7 @@ use datafusion::prelude::{
     SessionConfig, SessionContext,
 };
 use datafusion::sql::parser::{DFParser, Statement as DFStatement};
+use datafusion_proto::logical_plan::LogicalExtensionCodec;
 
 struct BallistaContextState {
     /// Ballista configuration
@@ -88,7 +89,9 @@ impl BallistaContext {
         host: &str,
         port: u16,
         config: &BallistaConfig,
+        extension_codec: Arc<dyn LogicalExtensionCodec>,
     ) -> ballista_core::error::Result<Self> {
+        println!("using cuda remote");
         let state = BallistaContextState::new(host.to_owned(), port, config);
 
         let scheduler_url =
@@ -131,6 +134,7 @@ impl BallistaContext {
                 scheduler_url,
                 remote_session_id,
                 state.config(),
+                extension_codec,
             )
         };
 
