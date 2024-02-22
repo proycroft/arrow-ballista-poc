@@ -24,7 +24,7 @@ ENV RUST_LOG=info
 ENV RUST_BACKTRACE=full
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y nginx netcat
+RUN apt-get update && apt-get install -y nginx netcat ca-certificates
 
 COPY target/$RELEASE_FLAG/ballista-scheduler /root/ballista-scheduler
 

@@ -23,7 +23,7 @@ ENV RELEASE_FLAG=${RELEASE_FLAG}
 ENV RUST_LOG=info
 ENV RUST_BACKTRACE=full
 
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat ca-certificates
 
 COPY target/$RELEASE_FLAG/ballista-executor /root/ballista-executor
 
